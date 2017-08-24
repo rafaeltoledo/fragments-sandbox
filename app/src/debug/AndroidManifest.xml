@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="net.rafaeltoledo.gamestore">
+
+    <application
+        android:name=".DebugStoreApp"
+        tools:replace="android:name" />
+
+</manifest>
