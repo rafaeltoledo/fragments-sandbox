@@ -13,7 +13,10 @@ android:
     # Update tools and then platform-tools explicitly so lint gets an updated database. Can be removed once 3.0 is out.
     # TODO verify this is no longer needed for lint to run.
     - tools
+    - tools
     - platform-tools
+    - android-19
+    - android-26
     - sys-img-armeabi-v7a-android-19
 
 before_install:
