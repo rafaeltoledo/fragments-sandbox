@@ -1,0 +1,1 @@
+[![Build Status](https://api.travis-ci.org/rafaeltoledo/fragments-sandbox.svg)](https://travis-ci.org/rafaeltoledo/fragments-sandbox)
