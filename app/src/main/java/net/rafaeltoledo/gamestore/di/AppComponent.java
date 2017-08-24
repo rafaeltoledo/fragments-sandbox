@@ -10,7 +10,9 @@ import dagger.android.AndroidInjectionModule;
 
 @Singleton
 @Component(modules = {
-        AndroidInjectionModule.class
+        AndroidInjectionModule.class,
+        AppModule.class,
+        ActivitiesModule.class
 })
 public interface AppComponent {
 
