@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "438684647787",
+    "firebase_url": "https://game-store-frag.firebaseio.com",
+    "project_id": "game-store-frag",
+    "storage_bucket": "game-store-frag.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438684647787:android:cfe6a44fb16be006",
+        "android_client_info": {
+          "package_name": "net.rafaeltoledo.gamestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438684647787-t7v67ic6h409h16j0r0jslgms38nlmvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCtj0c2WnzSTT6A-K6r5NZFjQ8QEcqaf0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

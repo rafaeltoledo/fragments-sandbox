@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
@@ -26,13 +27,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        execution 'ANDROID_TEST_ORCHESTRATOR'
+    }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
+final supportVersion = '26.0.1'
 final daggerVersion = '2.11'
 final archVersion = '1.0.0-alpha9'
+final googleVersion = '11.2.0'
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:26.0.1'
+    implementation "com.android.support:appcompat-v7:$supportVersion"
 
     provided "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android:$daggerVersion"
@@ -48,11 +59,20 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$archVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
 
+    implementation "com.google.firebase:firebase-perf:$googleVersion"
+    implementation "com.google.firebase:firebase-core:$googleVersion"
+    releaseImplementation "com.google.firebase:firebase-crash:$googleVersion"
+
     implementation 'com.jakewharton.timber:timber:4.5.1'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:3.4.2'
+    testImplementation 'org.assertj:assertj-core:3.8.0'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.0'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1-alpha-1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1-alpha-1'
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.1-alpha-1'
 }
+
+apply plugin: 'com.google.gms.google-services'
