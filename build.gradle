@@ -1,7 +1,10 @@
 buildscript {
+    ext.isCi = Boolean.parseBoolean(System.getProperty('CI', 'false'))
+
     repositories {
         jcenter()
         google()
+        maven { url 'https://plugins.gradle.org/m2' }
     }
 
     dependencies {
@@ -9,6 +12,7 @@ buildscript {
         classpath 'com.google.gms:google-services:3.1.0'
         classpath 'com.google.firebase:firebase-plugins:1.1.1'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
+        classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.11'
     }
 }
 
@@ -16,6 +20,37 @@ allprojects {
     repositories {
         jcenter()
         google()
+    }
+}
+
+subprojects {
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                // Force all the error-prone dependencies to use the same version.
+                if (details.requested.group == 'com.google.errorprone'
+                        && details.requested.name.startsWith('error_prone_')) {
+                    details.useVersion '2.1.0'
+                }
+            }
+        }
+    }
+
+    if (isCi) {
+        project.apply(plugin: 'net.ltgt.errorprone')
+
+        project.tasks.withType(JavaCompile) {
+            options.compilerArgs += [
+                    '-Xep:UnnecessaryDefaultInEnumSwitch:ERROR',
+                    '-Xep:TypeParameterUnusedInFormals:ERROR',
+                    '-Xep:MissingOverride:ERROR',
+                    '-Xep:ClassCanBeStatic:ERROR',
+                    '-Xep:OperatorPrecedence:ERROR',
+                    '-Xep:ReferenceEquality:ERROR',
+                    '-Xep:FloatingPointLiteralPrecision:ERROR',
+                    '-Xep:SimpleDateFormatConstant:ERROR',
+            ]
+        }
     }
 }
 
