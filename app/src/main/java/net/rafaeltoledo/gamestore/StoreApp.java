@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import net.rafaeltoledo.gamestore.di.AppComponent;
 import net.rafaeltoledo.gamestore.di.AppInjector;
@@ -28,11 +30,20 @@ public class StoreApp extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
+        setupLeakCanary();
+
         AndroidThreeTen.init(this);
 
         prepareRxJavaErrorHandler();
 
         AppInjector.init(createAppComponent(), this);
+    }
+
+    private RefWatcher setupLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return RefWatcher.DISABLED;
+        }
+        return LeakCanary.install(this);
     }
 
     protected AppComponent createAppComponent() {

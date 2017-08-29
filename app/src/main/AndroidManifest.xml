@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="net.rafaeltoledo.gamestore">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".StoreApp"
         android:allowBackup="false"
@@ -12,7 +14,7 @@
         android:theme="@style/Store.Theme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".ui.feature.home.HomeActivity">
+        <activity android:name=".ui.feature.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

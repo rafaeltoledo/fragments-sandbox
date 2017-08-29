@@ -1,6 +1,6 @@
 package net.rafaeltoledo.gamestore.di;
 
-import net.rafaeltoledo.gamestore.ui.feature.home.HomeActivity;
+import net.rafaeltoledo.gamestore.ui.feature.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -9,5 +9,5 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivitiesModule {
 
     @ContributesAndroidInjector
-    public abstract HomeActivity provideHomeActivity();
+    public abstract MainActivity provideMainActivity();
 }
