@@ -13,6 +13,8 @@ android {
         versionCode 1
         versionName '0.0.1'
 
+        vectorDrawables.useSupportLibrary = true
+
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
@@ -41,7 +43,7 @@ final supportVersion = '26.0.1'
 final daggerVersion = '2.11'
 final archVersion = '1.0.0-alpha9'
 final googleVersion = '11.2.0'
-final leakVersion = '1.5.2'
+final leakVersion = '1.5.1'
 
 dependencies {
     implementation "com.android.support:appcompat-v7:$supportVersion"
@@ -78,9 +80,9 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:3.4.2'
     testImplementation 'com.google.truth:truth:0.34'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.1-alpha-1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1-alpha-1'
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.1-alpha-1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

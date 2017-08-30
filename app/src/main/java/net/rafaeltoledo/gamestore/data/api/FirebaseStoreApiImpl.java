@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Single;
+import timber.log.Timber;
 
 @Singleton
 public class FirebaseStoreApiImpl implements StoreApi {
@@ -31,11 +32,12 @@ public class FirebaseStoreApiImpl implements StoreApi {
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        emitter.onSuccess(dataSnapshot.getValue(new GenericTypeIndicator<>()));
+                        emitter.onSuccess(dataSnapshot.getValue(new GenericTypeIndicator<List<Banner>>() {}));
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+                        Timber.d(databaseError.toException());
                         emitter.onError(databaseError.toException());
                     }
                 }));

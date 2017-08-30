@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import net.rafaeltoledo.gamestore.data.model.Banner;
 import net.rafaeltoledo.gamestore.ui.BaseFragment;
+import net.rafaeltoledo.gamestore.ui.BaseViewModel;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class HomeFragment extends BaseFragment {
     @Inject
     ViewModelProvider.Factory viewModelFactory;
 
-    HomeViewModel viewModel;
+    private HomeViewModel viewModel;
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -29,7 +30,15 @@ public class HomeFragment extends BaseFragment {
 
         viewModel.fetchBanners();
 
-        viewModel.banners.observe(this, banners -> setupAdapter(banners));
+        viewModel.banners.observe(this, this::setupAdapter);
+
+        getBaseViewModel().error.observe(this, error -> {
+            Timber.tag("Error").e(String.valueOf(error));
+        });
+
+        getBaseViewModel().retriableError.observe(this, error -> {
+            Timber.tag("Retriable Error").e(String.valueOf(error));
+        });
     }
 
     private void setupAdapter(List<Banner> banners) {
@@ -37,5 +46,10 @@ public class HomeFragment extends BaseFragment {
             Timber.d(banner.getTitle());
             Timber.d(banner.getImage());
         }
+    }
+
+    @Override
+    protected BaseViewModel getBaseViewModel() {
+        return viewModel;
     }
 }

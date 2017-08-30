@@ -3,4 +3,12 @@
 
     <string name="app_name">Game Store</string>
 
+    <string name="title_error">Oops… Something isn\'t right</string>
+    <string name="title_retriable_error">Failed to connect to server</string>
+
+    <string name="message_error">Your problem was reported and we are investigating. Please try again later.</string>
+    <string name="message_retriable_error">Please check your connection and try again.</string>
+
+    <string name="button_retriable_error">Try again</string>
+
 </resources>

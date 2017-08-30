@@ -2,8 +2,11 @@ package net.rafaeltoledo.gamestore.data.model;
 
 public class Banner {
 
-    private final String image;
-    private final String title;
+    private String image;
+    private String title;
+
+    protected Banner() {
+    }
 
     public Banner(String image, String title) {
         this.image = image;
