@@ -13,7 +13,9 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:inAnimation="@android:anim/fade_in"
+        android:orientation="vertical"
+        android:outAnimation="@android:anim/fade_out">
 
         <include layout="@layout/view_loading" />
 

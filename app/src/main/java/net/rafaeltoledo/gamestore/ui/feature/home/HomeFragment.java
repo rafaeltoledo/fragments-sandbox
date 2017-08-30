@@ -43,6 +43,8 @@ public class HomeFragment extends BaseFragment {
 
         viewModel.banners.observe(this, this::setupAdapter);
         setupErrorHandler();
+
+        performRequest();
     }
 
     private void setupAdapter(List<Banner> banners) {

@@ -19,6 +19,7 @@ public abstract class BaseFragment extends LifecycleFragment implements Injectab
     private static final int VIEW_CONTENT = 2;
 
     protected abstract BaseViewModel getBaseViewModel();
+
     protected abstract void performRequest();
 
     private TemplateScreenBinding template;
@@ -57,13 +58,17 @@ public abstract class BaseFragment extends LifecycleFragment implements Injectab
         });
 
         getBaseViewModel().error.observe(this, error -> {
-            template.setRetriableError(true);
-            template.content.setDisplayedChild(VIEW_ERROR);
+            if (Boolean.TRUE.equals(error)) {
+                template.setRetriableError(true);
+                template.content.setDisplayedChild(VIEW_ERROR);
+            }
         });
 
         getBaseViewModel().retriableError.observe(this, error -> {
-            template.setRetriableError(false);
-            template.content.setDisplayedChild(VIEW_ERROR);
+            if (Boolean.TRUE.equals(error)) {
+                template.setRetriableError(false);
+                template.content.setDisplayedChild(VIEW_ERROR);
+            }
         });
     }
 }
