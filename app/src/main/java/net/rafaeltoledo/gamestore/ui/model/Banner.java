@@ -1,19 +1,21 @@
-package net.rafaeltoledo.gamestore.data.model;
+package net.rafaeltoledo.gamestore.ui.model;
+
+import com.google.firebase.storage.StorageReference;
 
 public class Banner {
 
-    private String image;
+    private StorageReference image;
     private String title;
 
     protected Banner() {
     }
 
-    public Banner(String image, String title) {
+    public Banner(StorageReference image, String title) {
         this.image = image;
         this.title = title;
     }
 
-    public String getImage() {
+    public StorageReference getImage() {
         return image;
     }
 

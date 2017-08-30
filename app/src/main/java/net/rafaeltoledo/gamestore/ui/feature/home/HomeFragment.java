@@ -8,16 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.rafaeltoledo.gamestore.data.model.Banner;
 import net.rafaeltoledo.gamestore.databinding.FragmentHomeBinding;
 import net.rafaeltoledo.gamestore.ui.BaseFragment;
 import net.rafaeltoledo.gamestore.ui.BaseViewModel;
+import net.rafaeltoledo.gamestore.ui.model.Banner;
 
 import java.util.List;
 
 import javax.inject.Inject;
-
-import timber.log.Timber;
 
 public class HomeFragment extends BaseFragment {
 
@@ -48,10 +46,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void setupAdapter(List<Banner> banners) {
-        for (Banner banner : banners) {
-            Timber.d(banner.getTitle());
-            Timber.d(banner.getImage());
-        }
+        binding.banners.setAdapter(new BannerAdapter(banners));
     }
 
     @Override

@@ -5,9 +5,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
-import net.rafaeltoledo.gamestore.data.model.Banner;
+import net.rafaeltoledo.gamestore.data.model.ApiBanner;
+import net.rafaeltoledo.gamestore.ui.model.Banner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,9 +24,11 @@ import timber.log.Timber;
 public class FirebaseStoreApiImpl implements StoreApi {
 
     private final FirebaseDatabase database;
+    private final FirebaseStorage storage;
 
     @Inject
     FirebaseStoreApiImpl() {
+        this.storage = FirebaseStorage.getInstance();
         this.database = FirebaseDatabase.getInstance();
     }
 
@@ -32,7 +38,18 @@ public class FirebaseStoreApiImpl implements StoreApi {
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        emitter.onSuccess(dataSnapshot.getValue(new GenericTypeIndicator<List<Banner>>() {}));
+                        List<ApiBanner> banners = dataSnapshot.getValue(new GenericTypeIndicator<List<ApiBanner>>() { });
+                        if (banners != null) {
+                            List<Banner> result = new ArrayList<>(banners.size());
+                            for (ApiBanner banner : banners) {
+                                StorageReference storageRef = storage.getReference().child(banner.getImage());
+                                result.add(new Banner(storageRef, banner.getTitle()));
+
+                            }
+                            emitter.onSuccess(result);
+                        } else {
+                            emitter.onError(new NullPointerException());
+                        }
                     }
 
                     @Override
