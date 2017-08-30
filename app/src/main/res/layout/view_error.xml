@@ -28,22 +28,24 @@
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{retriable ? @string/title_retriable_error : @string/title_error}"
+            android:text="@{safeUnbox(retriable) ? @string/title_retriable_error : @string/title_error}"
             tools:text="@string/title_retriable_error" />
 
         <TextView
             style="@style/Base.TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{retriable ? @string/message_retriable_error : @string/message_error}"
+            android:gravity="center"
+            android:text="@{safeUnbox(retriable) ? @string/message_retriable_error : @string/message_error}"
             tools:text="@string/message_retriable_error" />
 
         <Button
+            android:id="@+id/button_retry"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_retriable_error"
-            android:visibility="@{retriable ? View.VISIBLE : View.GONE}"
+            android:visibility="@{safeUnbox(retriable) ? View.VISIBLE : View.GONE}"
             tools:visibility="visible" />
 
     </LinearLayout>

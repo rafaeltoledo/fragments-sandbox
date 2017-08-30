@@ -20,6 +20,9 @@ public class HomeViewModel extends BaseViewModel {
     }
 
     public void fetchBanners() {
-        disposables.add(api.fetchBanners().subscribe(banners -> this.banners.postValue(banners), errorHandler));
+        loading.postValue(Boolean.TRUE);
+        disposables.add(api.fetchBanners()
+                .doOnSuccess(ignored -> loading.postValue(Boolean.FALSE))
+                .subscribe(banners -> this.banners.postValue(banners), errorHandler));
     }
 }

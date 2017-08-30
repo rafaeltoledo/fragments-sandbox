@@ -4,8 +4,12 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import net.rafaeltoledo.gamestore.data.model.Banner;
+import net.rafaeltoledo.gamestore.databinding.FragmentHomeBinding;
 import net.rafaeltoledo.gamestore.ui.BaseFragment;
 import net.rafaeltoledo.gamestore.ui.BaseViewModel;
 
@@ -22,23 +26,23 @@ public class HomeFragment extends BaseFragment {
 
     private HomeViewModel viewModel;
 
+    private FragmentHomeBinding binding;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ViewGroup root = (ViewGroup) super.onCreateView(inflater, container, savedInstanceState);
+        binding = FragmentHomeBinding.inflate(inflater, root, false);
+        return wrapView(binding);
+    }
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProviders.of(getActivity(), viewModelFactory)
-                .get(HomeViewModel.class);
-
-        viewModel.fetchBanners();
+        viewModel = ViewModelProviders.of(getActivity(), viewModelFactory).get(HomeViewModel.class);
 
         viewModel.banners.observe(this, this::setupAdapter);
-
-        getBaseViewModel().error.observe(this, error -> {
-            Timber.tag("Error").e(String.valueOf(error));
-        });
-
-        getBaseViewModel().retriableError.observe(this, error -> {
-            Timber.tag("Retriable Error").e(String.valueOf(error));
-        });
+        setupErrorHandler();
     }
 
     private void setupAdapter(List<Banner> banners) {
@@ -51,5 +55,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected BaseViewModel getBaseViewModel() {
         return viewModel;
+    }
+
+    @Override
+    protected void performRequest() {
+        viewModel.fetchBanners();
     }
 }

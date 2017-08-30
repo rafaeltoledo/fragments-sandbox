@@ -8,6 +8,7 @@
 
     <string name="message_error">Your problem was reported and we are investigating. Please try again later.</string>
     <string name="message_retriable_error">Please check your connection and try again.</string>
+    <string name="message_loading">Hold on, we\'re loading…</string>
 
     <string name="button_retriable_error">Try again</string>
 

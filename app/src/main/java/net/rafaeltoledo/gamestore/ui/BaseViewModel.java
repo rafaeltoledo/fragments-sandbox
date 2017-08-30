@@ -9,14 +9,15 @@ import java.io.IOException;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
+import timber.log.Timber;
 
 public abstract class BaseViewModel extends ViewModel {
 
     protected final StoreApi api;
 
-    public final MutableLiveData<Boolean> error = new MutableLiveData<>();
-    public final MutableLiveData<Boolean> retriableError = new MutableLiveData<>();
-    public final MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    final MutableLiveData<Boolean> error = new MutableLiveData<>();
+    final MutableLiveData<Boolean> retriableError = new MutableLiveData<>();
+    protected final MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
     public BaseViewModel(StoreApi api) {
         this.api = api;
@@ -28,6 +29,8 @@ public abstract class BaseViewModel extends ViewModel {
     protected CompositeDisposable disposables = new CompositeDisposable();
 
     protected Consumer<Throwable> errorHandler = throwable -> {
+        Timber.e(throwable);
+        loading.postValue(Boolean.FALSE);
         if (throwable instanceof IOException) {
             retriableError.postValue(true);
         } else {
