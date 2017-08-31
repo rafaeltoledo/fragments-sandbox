@@ -39,7 +39,7 @@ android {
     }
 }
 
-final supportVersion = '26.0.1'
+final supportVersion = '26.0.2'
 final daggerVersion = '2.11'
 final glideVersion = '4.0.0'
 final archVersion = '1.0.0-alpha9'
