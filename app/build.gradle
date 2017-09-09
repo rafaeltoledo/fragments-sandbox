@@ -43,7 +43,7 @@ final supportVersion = '26.0.2'
 final daggerVersion = '2.11'
 final glideVersion = '4.0.0'
 final archVersion = '1.0.0-alpha9'
-final googleVersion = '11.2.0'
+final googleVersion = '11.2.2'
 final leakVersion = '1.5.1'
 
 dependencies {
