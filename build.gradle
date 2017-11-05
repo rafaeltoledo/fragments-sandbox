@@ -8,11 +8,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta5'
-        classpath 'com.google.gms:google-services:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'com.google.gms:google-services:3.1.2'
         classpath 'com.google.firebase:firebase-plugins:1.1.1'
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
-        classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.11'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.1'
+        classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.13'
     }
 }
 
@@ -30,7 +30,7 @@ subprojects {
                 // Force all the error-prone dependencies to use the same version.
                 if (details.requested.group == 'com.google.errorprone'
                         && details.requested.name.startsWith('error_prone_')) {
-                    details.useVersion '2.1.1'
+                    details.useVersion '2.1.2'
                 }
             }
         }
