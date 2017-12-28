@@ -20,6 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        flatDir { dirs "$rootDir/app/libs/" }
     }
 }
 
