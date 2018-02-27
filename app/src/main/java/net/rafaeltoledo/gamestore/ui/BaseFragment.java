@@ -1,18 +1,17 @@
 package net.rafaeltoledo.gamestore.ui;
 
-import android.arch.lifecycle.LifecycleFragment;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import net.rafaeltoledo.gamestore.R;
 import net.rafaeltoledo.gamestore.databinding.TemplateScreenBinding;
 import net.rafaeltoledo.gamestore.di.Injectable;
 
-public abstract class BaseFragment extends LifecycleFragment implements Injectable {
+public abstract class BaseFragment extends Fragment implements Injectable {
 
     private static final int VIEW_LOADING = 0;
     private static final int VIEW_ERROR = 1;
