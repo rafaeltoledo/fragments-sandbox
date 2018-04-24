@@ -38,12 +38,11 @@ android {
     }
 }
 
-final supportVersion = '27.1.0'
-final daggerVersion = '2.14.1'
-final glideVersion = '4.6.1'
-final archLifecycleVersion = '1.1.0'
-final archRoomVersion = '1.1.0'
-final googleVersion = '11.8.0'
+final supportVersion = '27.1.1'
+final daggerVersion = '2.15'
+final glideVersion = '4.7.1'
+final archVersion = '1.1.1'
+final googleVersion = '15.0.0'
 final leakVersion = '1.5.4'
 
 dependencies {
@@ -52,7 +51,7 @@ dependencies {
     implementation "com.android.support:cardview-v7:$supportVersion"
     implementation "com.android.support:support-v4:$supportVersion"
 
-    implementation name: 'design-release-19c081b', ext: 'aar'
+    implementation name: 'design-release-197c769', ext: 'aar'
 
     compileOnly "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android:$daggerVersion"
@@ -60,12 +59,12 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.10'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
-    implementation "android.arch.lifecycle:runtime:$archLifecycleVersion"
-    implementation "android.arch.lifecycle:extensions:$archRoomVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$archRoomVersion"
+    implementation "android.arch.lifecycle:runtime:$archVersion"
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$archVersion"
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
@@ -79,16 +78,16 @@ dependencies {
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakVersion"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakVersion"
 
-    implementation 'com.jakewharton.timber:timber:4.6.1'
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.0.5'
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.7.1'
-    testImplementation 'com.google.truth:truth:0.39'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'com.google.truth:truth:0.40'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.2-alpha1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2-alpha1'
-    androidTestUtil 'com.android.support.test:orchestrator:1.0.2-alpha1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2-beta1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2-beta1'
+    androidTestUtil 'com.android.support.test:orchestrator:1.0.2-beta1'
 }
 
 apply plugin: 'com.google.gms.google-services'
