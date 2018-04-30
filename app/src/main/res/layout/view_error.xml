@@ -39,9 +39,9 @@
             android:text="@{safeUnbox(retriable) ? @string/message_retriable_error : @string/message_error}"
             tools:text="@string/message_retriable_error" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_retry"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_retriable_error"
