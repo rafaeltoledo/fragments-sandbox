@@ -12,7 +12,7 @@
             type="Boolean" />
     </data>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -48,6 +48,6 @@
             android:visibility="@{safeUnbox(retriable) ? View.VISIBLE : View.GONE}"
             tools:visibility="visible" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

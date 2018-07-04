@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import androidx.annotation.NonNull;
 import io.reactivex.Single;
 import timber.log.Timber;
 
@@ -37,7 +38,7 @@ public class FirebaseStoreApiImpl implements StoreApi {
         return Single.create(emitter -> database.getReference("banners").addValueEventListener(
                 new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         List<ApiBanner> banners = dataSnapshot.getValue(new GenericTypeIndicator<List<ApiBanner>>() { });
                         if (banners != null) {
                             List<Banner> result = new ArrayList<>(banners.size());
@@ -53,7 +54,7 @@ public class FirebaseStoreApiImpl implements StoreApi {
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
                         Timber.d(databaseError.toException());
                         emitter.onError(databaseError.toException());
                     }

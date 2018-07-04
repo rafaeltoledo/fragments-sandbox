@@ -1,6 +1,5 @@
 package net.rafaeltoledo.gamestore.ui.feature.home;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,9 @@ import net.rafaeltoledo.gamestore.ui.model.Banner;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
 public class BannerAdapter extends PagerAdapter {
 
     private final List<Banner> banners;
@@ -21,8 +23,9 @@ public class BannerAdapter extends PagerAdapter {
         this.banners = banners;
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup collection, int position) {
+    public Object instantiateItem(@NonNull ViewGroup collection, int position) {
         LayoutInflater inflater = LayoutInflater.from(collection.getContext());
         ImageView banner = (ImageView) inflater.inflate(R.layout.item_banner, collection, false);
         Glide.with(collection.getContext()).load(banners.get(position).getImage()).into(banner);
@@ -36,12 +39,12 @@ public class BannerAdapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup collection, int position, Object view) {
+    public void destroyItem(@NonNull ViewGroup collection, int position, @NonNull Object view) {
         collection.removeView((View) view);
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view == object;
     }
 }

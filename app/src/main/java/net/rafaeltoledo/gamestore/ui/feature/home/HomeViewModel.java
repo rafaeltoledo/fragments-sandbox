@@ -1,7 +1,5 @@
 package net.rafaeltoledo.gamestore.ui.feature.home;
 
-import android.arch.lifecycle.MutableLiveData;
-
 import net.rafaeltoledo.gamestore.data.api.StoreApi;
 import net.rafaeltoledo.gamestore.ui.BaseViewModel;
 import net.rafaeltoledo.gamestore.ui.model.Banner;
@@ -9,6 +7,8 @@ import net.rafaeltoledo.gamestore.ui.model.Banner;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import androidx.lifecycle.MutableLiveData;
 
 public class HomeViewModel extends BaseViewModel {
 
@@ -19,7 +19,7 @@ public class HomeViewModel extends BaseViewModel {
         super(api);
     }
 
-    public void fetchBanners() {
+    void fetchBanners() {
         loading.postValue(Boolean.TRUE);
         disposables.add(api.fetchBanners()
                 .doOnSuccess(ignored -> loading.postValue(Boolean.FALSE))

@@ -1,12 +1,11 @@
 package net.rafaeltoledo.gamestore.ui;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-
 import net.rafaeltoledo.gamestore.data.api.StoreApi;
 
 import java.io.IOException;
 
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import timber.log.Timber;

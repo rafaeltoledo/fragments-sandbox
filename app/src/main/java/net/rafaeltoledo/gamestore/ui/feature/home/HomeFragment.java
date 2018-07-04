@@ -1,9 +1,6 @@
 package net.rafaeltoledo.gamestore.ui.feature.home;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +13,10 @@ import net.rafaeltoledo.gamestore.ui.model.Banner;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 public class HomeFragment extends BaseFragment {
 

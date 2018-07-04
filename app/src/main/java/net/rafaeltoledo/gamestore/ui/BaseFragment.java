@@ -1,15 +1,17 @@
 package net.rafaeltoledo.gamestore.ui;
 
-import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import net.rafaeltoledo.gamestore.R;
 import net.rafaeltoledo.gamestore.databinding.TemplateScreenBinding;
 import net.rafaeltoledo.gamestore.di.Injectable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 
 public abstract class BaseFragment extends Fragment implements Injectable {
 
@@ -25,7 +27,7 @@ public abstract class BaseFragment extends Fragment implements Injectable {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         template = TemplateScreenBinding.inflate(inflater, container, false);
         template.error.buttonRetry.setOnClickListener(v -> performRequest());
         return template.getRoot();

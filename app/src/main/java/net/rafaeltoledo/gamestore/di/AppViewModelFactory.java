@@ -1,13 +1,14 @@
 package net.rafaeltoledo.gamestore.di;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 @Singleton
 public class AppViewModelFactory implements ViewModelProvider.Factory {
@@ -21,7 +22,7 @@ public class AppViewModelFactory implements ViewModelProvider.Factory {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T extends ViewModel> T create(Class<T> modelClass) {
+    public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         Provider<? extends ViewModel> creator = creators.get(modelClass);
 
         if (creator == null) {
